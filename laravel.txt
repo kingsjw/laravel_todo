@@ -1,0 +1,20 @@
+laravel
+comporser - 의존성관리시스템
+
+https://laravel.com/docs/5.5
+dbname = todo
+폴더경로 cmd composer create-project --prefer-dist laravel/laravel todo
+.env 파일에 디비이름 쓰기
+127.0.0.1/todo/public/
+AppServiceProvider.php에서 
+use Illuminate\Support\Facades\Schema;넣고
+public function boot() 이 함수 안에다가
+Schema::defaultStringLength(191); 이거 넣자
+php artisan migrate 디비 생성
+그 다음
+C:\xampp\htdocs\todo>php artisan make:migration create_tasks_table --create=tasks 이거 커멘드에 입력
+
+그다음
+database폴더에 새로생긴 파일에 들어가서 
+Schema::create('tasks', function (Blueprint $table) 이거 안에             $table->String('description');
+            $table->integer('user_id')->unsigned()->index(); 이거 넣자
